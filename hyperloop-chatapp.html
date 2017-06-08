@@ -42,22 +42,40 @@
         end
 
         class Nav < Hyperloop::Component
+            before_mount do
+                mutate.current_user_name! nil
+
+                mutate.user_name_input! ""
+            end
+
             def render
                 DIV do
                     INPUT(
-                        class: :handle,
-
                         type: :text,
 
-                        placeholder: "Enter your handle"
-                    )
+                        value: state.user_name_input,
+
+                        placeholder: "Enter your Handle"
+                    ).on(:change) do |e|
+                        mutate.user_name_input e.target.value
+                    end
 
                     BUTTON(type: :button) {
                         "Login!"
                     }.on(:click) do
-                        alert("#{ Element['input.handle'].value } logs in!")
-                    end
+                        login!
+                    end if valid_new_input?
                 end
+            end
+
+            def valid_new_input?
+                state.user_name_input.present? && state.user_name_input != state.current_user_name
+            end
+
+            def login!
+                mutate.current_user_name state.user_name_input
+
+                puts "*** #{ state.current_user_name } has logged in"
             end
         end
 
