@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+    <title>
+        Hyperloop Chat App
+    </title>
+
+    <!-- React and JQuery -->
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Opal and Hyperloop -->
+    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/master/opal-compiler.min.js"></script>
+    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/master/hyperloop.min.js"></script>
+
+    <!-- We are going to add 3 external libraires needed for our sample ChatApp (Bootstrap and markedown) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div data-hyperloop-mount="Helloworld"
+         data-name="">
+    </div>
+
+    <script type="text/ruby">
+        class Helloworld < Hyperloop::Component
+            def render
+                DIV do
+                    "hello world !"
+                end
+            end
+        end
+    </script>
+</body>
+</html>
