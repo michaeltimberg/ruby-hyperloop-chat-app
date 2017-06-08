@@ -43,9 +43,21 @@
 
         class Nav < Hyperloop::Component
             def render
-                DIV {
-                    "Our nav. bar goes here including a login box"
-                }
+                DIV do
+                    INPUT(
+                        class: :handle,
+
+                        type: :text,
+
+                        placeholder: "Enter your handle"
+                    )
+
+                    BUTTON(type: :button) {
+                        "Login!"
+                    }.on(:click) do
+                        alert("#{ Element['input.handle'].value } logs in!")
+                    end
+                end
             end
         end
 
