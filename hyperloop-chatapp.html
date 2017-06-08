@@ -24,16 +24,60 @@
 </head>
 
 <body>
-    <div data-hyperloop-mount="Helloworld"
+    <div data-hyperloop-mount="ChatApp"
          data-name="">
     </div>
 
     <script type="text/ruby">
-        class Helloworld < Hyperloop::Component
+        class ChatApp < Hyperloop::Component
             def render
                 DIV do
-                    "hello world !"
+                    Nav()
+
+                    Messages()
+
+                    InputBox()
                 end
+            end
+        end
+
+        class Nav < Hyperloop::Component
+            def render
+                DIV {
+                    "Our nav. bar goes here including a login box"
+                }
+            end
+        end
+
+        class Messages < Hyperloop::Component
+            def render
+                # Eventually we will loop over and display each message
+                # For now, we will just display one as an example
+
+                Message()
+            end
+        end
+
+        class Message < Hyperloop::Component
+            def render
+                FormattedDiv()
+            end
+        end
+
+        class InputBox < Hyperloop::Component
+            def render
+                DIV do
+                    "An input box to send new messages will".br
+                    "go here plus a display of the formatted markdown".br
+
+                    FormattedDiv()
+                end
+            end
+        end
+
+        class FormattedDiv < Hyperloop::Component
+            def render
+                "Convert and display markdown"
             end
         end
     </script>
