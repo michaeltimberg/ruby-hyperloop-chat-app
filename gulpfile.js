@@ -17,6 +17,9 @@ gulp.task('serve', function() {
     });
 
     gulp.watch(
-        ['*.html'], {cwd: 'app'},
+        ['*.html'],
+
+        {cwd: './'},
+
         reload);
 });

@@ -60,7 +60,7 @@
 
         class Message < Hyperloop::Component
             def render
-                FormattedDiv()
+                FormattedDiv(markdown: "This **Markdown** will eventually be a message")
             end
         end
 
@@ -70,14 +70,19 @@
                     "An input box to send new messages will".br
                     "go here plus a display of the formatted markdown".br
 
-                    FormattedDiv()
+                    FormattedDiv(markdown: "This **Markdown** will get updated as the user types")
                 end
             end
         end
 
         class FormattedDiv < Hyperloop::Component
+            param :markdown,
+                type: String
+
             def render
-                "Convert and display markdown"
+                DIV do
+                    params.markdown
+                end
             end
         end
     </script>

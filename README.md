@@ -12,6 +12,9 @@ I ran into trouble when using Gulp to serve my app, because I didn't rename `hyp
 
 After tons of research, I finally found my answer [here][3].
 
+The `cwd` key in the second argument of `gulp.watch()` was incorrect: it was pointing to the nonexistent `./app` dir.
+It is now correctly pointed at `./`.
+
 [1]: http://ruby-hyperloop.io/tutorials/hyperloopjs/chatapp/
 [2]: http://gulpjs.com
 [3]: https://browsersync.io/docs/options#option-server
