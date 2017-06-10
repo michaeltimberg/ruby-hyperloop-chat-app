@@ -30,6 +30,18 @@
 
     <script type="text/ruby">
         class ChatApp < Hyperloop::Component
+            before_mount do
+                ChatService.new do | messages |
+                    if state.messages
+                        mutate messages state.messages + messages
+                    else
+                        mutate.messages messages
+                    end
+
+                    puts "state messages uploaded.  state.messages: #{ state.messages }"
+                end
+            end
+
             def render
                 DIV do
                     Nav()
